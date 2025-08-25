@@ -7,6 +7,7 @@ const morgan = require('morgan');
 
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth.routes');
+const storageRoutes =require('./routes/storage.routes');
 const errorHandler = require('./middlewares/error');
 
 const app = express();
@@ -23,7 +24,8 @@ app.use(cors({
 // console.log(authRoutes);
 app.use('/api/auth', authRoutes);
 // console.log(errorHandler)
-// app.use(errorHandler);
+app.use(errorHandler);
+app.use('/api', storageRoutes)
 
 const PORT = process.env.PORT || 3000;
 

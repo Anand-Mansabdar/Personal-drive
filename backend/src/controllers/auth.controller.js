@@ -3,10 +3,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const userModel = require("../models/user.model");
 
-const signToken = (userId) => {
-  jwt.sign({ id: userId }, process.env.JWT_SECRET);
-};
-
 const register = async (req, res, next) => {
   try {
     const errors = validationResult(req);
